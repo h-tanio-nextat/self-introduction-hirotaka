@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            overflow: hidden; /* スクロールバーを非表示にする (ロード中) */
+        }
+
+        #loading-screen {
+            position: fixed; /* 画面に対して固定 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9); /* 半透明の白色背景 */
+            display: flex; /* Flexbox レイアウト */
+            justify-content: center; /* 水平方向中央揃え */
+            align-items: center; /* 垂直方向中央揃え */
+            z-index: 1000; /* 最前面に表示 */
+            animation: fadeOut 1.5s forwards 2s; /* 2秒後に1.5秒かけてフェードアウト */
+        }
+
+        .loading-image {
+            width: 80px; /* ローディング画像の幅 */
+            height: 80px; /* ローディング画像の高さ */
+            animation: rotate 1.5s linear infinite; /* 1.5秒かけて無限に回転アニメーション */
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg); /* 開始時の回転 */
+            }
+            to {
+                transform: rotate(360deg); /* 終了時の回転 */
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1; /* 開始時は不透明 */
+            }
+            to {
+                opacity: 0; /* 終了時は透明 */
+                display: none; /* アニメーション終了後に非表示 */
+            }
+        }
+
+        #initial-view {
+            text-align: center; /* テキスト中央揃え */
+            opacity: 0; /* 最初は非表示 */
+            animation: fadeIn 1s forwards 3s; /* 3秒後に1秒かけてフェードイン */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0; /* 開始時は透明 */
+            }
+            to {
+                opacity: 1; /* 終了時は不透明 */
+            }
+        }
+    </style>
+</head>
+<body id="index-page" class="page">
+    <div id="loading-screen">
+        <img src="../images/personal.jpg" alt="ローディング中..." class="loading-image">
+    </div>
+    <div id="initial-view">
+        <h1>何者？</h1>
+        <a href="profile.html" class="start-button">自己紹介に進む</a>
+    </div>
+</body>
+</html>
