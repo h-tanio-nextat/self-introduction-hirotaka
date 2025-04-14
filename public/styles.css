@@ -1,0 +1,417 @@
+/* styles.css */
+
+/* 全体的な body のスタイル */
+body {
+    font-family: sans-serif; /* ゴシック体 */
+    margin: 0; /* デフォルトの margin を0にリセット */
+    color: #444; /* 基本の文字色 */
+    min-width: 320px; /* 最小幅を設定し、狭い画面でのレイアウト崩れを防ぐ */
+    line-height: 1.7; /* 行間を少し広げて読みやすく */
+}
+
+/* 見出し用のフォント */
+h1,
+h2,
+h3 {
+    font-family: serif; /* 明朝体 */
+    font-weight: 700; /* 太字 */
+    color: #333; /* 見出しの文字色 */
+}
+
+/* 背景画像の固定*/
+body::before {
+    content: ""; /* 疑似要素には content が必須 */
+    display: block; /* ブロック要素として配置 */
+    position: fixed; /* 画面に対して固定 */
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10; /* 他の要素より背面に配置 */
+    background-size: cover; /* 背景画像を要素全体にフィットさせる */
+    background-repeat: no-repeat; /* 背景画像の繰り返しを禁止 */
+    background-position: center center; /* 背景画像を中央に配置 */
+}
+
+/* 各ページの背景画像指定 */
+#index-page::before {
+    background-image: url('../images/sakurajima.jpg'); /* index ページの背景画像 */
+}
+
+#profile-page::before {
+    background-image: url('../images/to-ji.jpg'); /* profile ページの背景画像 */
+}
+
+/* --- index.htmlの設定 ---  */
+#index-page {
+    min-height: 100vh; /* 少なくとも画面の高さいっぱいにする */
+    display: flex; /* Flexbox レイアウト */
+    justify-content: center; /* 水平方向中央揃え */
+    align-items: center; /* 垂直方向中央揃え */
+    text-align: center; /* テキストを中央揃え */
+}
+
+#initial-view {
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明の白色背景 */
+    padding: 30px 40px; /* 内側の余白 */
+    border-radius: 15px; /* 角を丸くする */
+    width: 90%; /* 幅を親要素の 90% に */
+    max-width: 450px; /* 最大幅を設定 */
+    box-sizing: border-box; /* padding, border を含めて幅を計算 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 影をつける */
+    text-align: center; /* テキストを中央揃え */
+    position: fixed; /* 画面に対して固定 */
+    bottom: 30px; /* 下からの距離 */
+    left: 50%; /* 左端から 50% の位置に */
+    transform: translateX(-50%); /* 中央揃えにするための調整 */
+    margin-bottom: 0; /* 下の margin をリセット */
+}
+
+#initial-view h1 {
+    margin-top: 0; /* 上の margin をリセット */
+    margin-bottom: 15px; /* 下の margin */
+    font-size: 2em; /* 文字サイズ */
+}
+
+.start-button {
+    display: inline-block; /* インライン要素のように横に並び、ブロック要素のように padding, margin を持つ */
+    padding: 12px 25px; /* 内側の余白 */
+    font-size: 1.1em; /* 文字サイズ */
+    background-color: #007bff; /* 背景色 (青) */
+    color: white; /* 文字色 (白) */
+    border: none; /* 枠線をなくす */
+    border-radius: 8px; /* 角を丸くする */
+    cursor: pointer; /* カーソルをポインターにする */
+    text-decoration: none; /* 下線をなくす */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* ホバー時のアニメーション */
+    margin-top: 10px; /* 上の margin */
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3); /* 影をつける */
+}
+
+/* --- profile.html 共通スタイル --- */
+.page-header {
+    background: linear-gradient(to right, #4a4e69, #22223b); /* グラデーション背景 */
+    color: white; /* 文字色 (白) */
+    padding: 1.2em 1em; /* 上下左右の内側の余白 */
+    text-align: center; /* テキストを中央揃え */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 影をつける */
+    position: sticky; /* スクロールしても固定表示 */
+    top: 0; /* 上端に固定 */
+    z-index: 100; /* 他の要素より前面に表示 */
+}
+
+.page-header h1 {
+    margin: 0 0 5px 0; /* 上下、左右の margin */
+    font-size: 1.8em; /* 文字サイズ */
+    color: white; /* 文字色 (白) */
+}
+
+.page-nav a {
+    color: #f0f0f0; /* リンクの文字色 */
+    text-decoration: none; /* 下線をなくす */
+    transition: color 0.3s ease; /* ホバー時のアニメーション */
+    font-size: 0.9em; /* 文字サイズ */
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+}
+
+.page-nav a:hover {
+    color: #fff; /* ホバー時の文字色 */
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.icon {
+    width: 40px; /* アイコンの幅 */
+    height: 40px; /* アイコンの高さ */
+    vertical-align: middle; /* 垂直方向中央揃え */
+    margin-right: 5px; /* 右の margin */
+}
+
+.icon-large {
+    width: 40px; /* 大きなアイコンの幅 */
+    height: 40px; /* 大きなアイコンの高さ */
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+    margin-right: 10px; /* タイトルとの間隔 */
+    flex-shrink: 0; /* アイコンが縮まないように */
+}
+
+.icon-li {
+    margin-right: 10px; /* 右の margin */
+    width: 40px; /* アイコンの幅 */
+    height: 40px; /* アイコンの高さ */
+    text-align: center; /* テキストを中央揃え */
+    flex-shrink: 0; /* アイコンが縮まないように */
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+    justify-content: center; /* 水平方向中央揃え */
+}
+
+.main-content {
+    background-color: transparent; /* 背景を透明に */
+    padding: 0; /* 内側の余白をなくす */
+    margin: 30px auto; /* 上下の margin、左右は自動 (中央揃え) */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: none; /* 影をなくす */
+    max-width: 800px; /* 最大幅を設定 */
+    width: 90%; /* 幅を親要素の 90% に */
+    box-sizing: border-box; /* padding, border を含めて幅を計算 */
+}
+
+.section {
+    margin-bottom: 25px; /* 下の margin */
+}
+
+.section:last-child {
+    margin-bottom: 0; /* 最後のセクションの下 margin をなくす */
+}
+
+.section-title {
+    padding-bottom: 8px; /* 下の内側の余白 */
+    margin-bottom: 20px; /* 下の margin */
+    font-size: 1.6em; /* 文字サイズ */
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+    position: relative; /* ::after の基準位置 */
+}
+
+/* セクション名に合わせて下線を表示 */
+.section-title::after {
+    content: ''; /* 疑似要素には content が必須 */
+    position: absolute; /* 親要素に対して絶対配置 */
+    left: 0; /* 左端からの距離 */
+    bottom: -1px; /* 下からの距離 */
+    width: 180px; /* 線の幅 */
+    height: 3px; /* 線の高さ */
+    border-radius: 2px; /* 角を丸くする */
+}
+
+ul {
+    list-style: none; /* リストの点をなくす */
+    padding: 0; /* 左の padding をなくす */
+}
+
+li {
+    margin-bottom: 12px; /* 下の margin */
+    font-size: 1em; /* 文字サイズ */
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+}
+
+.page-footer {
+    text-align: center; /* テキストを中央揃え */
+    padding: 15px 10px; /* 上下、左右の内側の余白 */
+    color: #888; /* 文字色 */
+    background-color: #f9f9f9; /* 背景色 */
+    margin: 0 auto 20px auto; /* 上下の margin、左右は自動 (中央揃え) */
+    max-width: 800px; /* 最大幅を設定 */
+    width: 90%; /* 幅を親要素の 90% に */
+    box-sizing: border-box; /* padding, border を含めて幅を計算 */
+    border-radius: 0 0 10px 10px; /* 下側の角を丸くする */
+    border-top: 1px solid #eee; /* 上のボーダー */
+    font-size: 0.9em; /* 文字サイズ */
+}
+
+
+/* --- profile.html 個別セクションのスタイル --- */
+
+/* 基本情報セクション (#basic-info) */
+#basic-info {
+    background: linear-gradient(135deg, #fffaf0, #fff5e1); /* グラデーション背景 */
+    padding: 25px; /* 内側の余白 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影をつける */
+}
+
+#basic-info .section-title {
+    color: #8b4513; /* タイトルの文字色 */
+}
+
+#basic-info .section-title::after {
+    background: linear-gradient(to right, #a0522d, #cd853f); /* タイトル下の線のグラデーション */
+}
+
+#basic-info .profile-container {
+    display: flex; /* Flexbox レイアウト */
+    align-items: center; /* 垂直方向中央揃え */
+    gap: 25px; /* 要素間の間隔 */
+    flex-wrap: wrap; /* 要素が収まらない場合に折り返す */
+    margin-top: 10px; /* 上の margin */
+}
+
+#basic-info .profile-pic {
+    width: 130px; /* プロフィール画像の幅 */
+    height: 130px; /* プロフィール画像の高さ */
+    border-radius: 50%; /* 円形にする */
+    object-fit: cover; /* 画像をアスペクト比を保ちつつ要素内に収める */
+    border: 4px solid #fff; /* 白色の枠線 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* 影をつける */
+    flex-shrink: 0; /* 画像が縮まないように */
+}
+
+#basic-info .profile-text {
+    flex: 1; /* 残りのスペースを埋める */
+}
+
+#basic-info .profile-text p {
+    margin-bottom: 8px; /* 下の margin */
+    color: #555; /* テキストの色 */
+}
+
+#basic-info .profile-text p strong {
+    color: #333; /* 強調テキストの色 */
+    margin-right: 5px; /* 右の margin */
+}
+
+/* 好きなものセクション (#favorites) */
+#favorites {
+    background: linear-gradient(135deg, #e0ffff, #c1f0f0); /* グラデーション背景 */
+    padding: 25px; /* 内側の余白 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影をつける */
+}
+
+#favorites .section-title {
+    color: #1e90ff; /* タイトルの文字色 */
+}
+
+#favorites .section-title::after {
+    background: linear-gradient(to right, #1e90ff, #87cefa); /* タイトル下の線のグラデーション */
+}
+
+#favorites ul {
+    padding-left: 5px; /* 左の padding */
+}
+
+#favorites li {
+    color: #333; /* リストの文字色 */
+    line-height: 1.6; /* 行間 */
+}
+
+/* 学生時代セクション (#school-days) */
+#school-days {
+    background: linear-gradient(135deg, #f0f8ff, #e6e6fa); /* グラデーション背景 */
+    padding: 25px; /* 内側の余白 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影をつける */
+}
+
+#school-days .section-title {
+    color: #483d8b; /* タイトルの文字色 */
+}
+
+#school-days .section-title::after {
+    background: linear-gradient(to right, #483d8b, #6a5acd); /* タイトル下の線のグラデーション */
+}
+
+#school-days ul {
+    padding-left: 5px; /* 左の padding */
+}
+
+#school-days li {
+    color: #333; /* リストの文字色 */
+     line-height: 1.6; /* 行間 */
+}
+
+/* --- レスポンシブ対応 --- */
+@media screen and (max-width: 600px) { /* 画面幅が 600px 以下の場合に適用 */
+    body {
+        font-size: 14px; /* 基本の文字サイズを小さく */
+    }
+
+    /* index.html */
+    #initial-view {
+        padding: 20px; /* 内側の余白を小さく */
+        width: 90%; /* 幅を 90% に */
+    }
+
+    #initial-view h1 {
+        font-size: 1.7em; /* 見出しの文字サイズを小さく */
+    }
+
+    .start-button {
+        padding: 10px 20px; /* ボタンの内側の余白を小さく */
+        font-size: 1em; /* ボタンの文字サイズを小さく */
+    }
+
+    /* profile.html 共通 */
+    .page-header h1 {
+        font-size: 1.5em; /* ヘッダーの見出しを小さく */
+    }
+
+    .page-nav a {
+        font-size: 0.85em; /*font-size: 0.85em; /* ナビゲーションリンクの文字サイズを小さく */
+    }
+
+    .main-content {
+        margin: 20px auto; /* 上下の margin を小さく */
+        width: 95%; /* 幅を広げる */
+    }
+
+    .page-footer {
+        width: 95%; /* 幅を広げる */
+        margin: 0 auto 15px auto; /* 下の margin を小さく */
+        padding: 10px; /* 内側の余白を小さく */
+        border-radius: 0 0 8px 8px; /* フッターの角丸はそのまま */
+    }
+
+    .section {
+        margin-bottom: 20px; /* 下の margin を小さく */
+    }
+
+    /* 基本情報、好きなもの、学生時代のスマホ用スタイル */
+    #basic-info, #favorites, #school-days {
+        padding: 20px; /* 内側の余白を小さく */
+        border-radius: 8px; /* 角を丸くする */
+    }
+
+    .section-title {
+        font-size: 1.4em; /* セクションタイトルの文字サイズを小さく */
+        margin-bottom: 15px; /* 下の margin を小さく */
+    }
+
+    .section-title::after {
+        width: 120px; /* 線の幅を短く */
+        height: 2.5px; /* 線の高さを小さく */
+        bottom: -0.75px; /* 下からの距離を調整 */
+    }
+
+    .icon-large { /* スマホでのアイコンサイズ調整 */
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    li {
+        font-size: 0.95em; /* リストの文字サイズを小さく */
+        margin-bottom: 10px; /* 下の margin を小さく */
+    }
+
+    .icon-li { /* スマホでのアイコンサイズ調整 */
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    /* profile.html 基本情報、好きなもの、学生時代のレスポンシブ調整 */
+    #basic-info .profile-container {
+        flex-direction: column; /* 要素を縦に並べる */
+        align-items: center; /* 水平方向中央揃え */
+        text-align: center; /* テキストを中央揃え */
+        gap: 15px; /* 要素間の間隔を小さく */
+    }
+
+    #basic-info .profile-pic {
+        width: 100px; /* プロフィール画像の幅を小さく */
+        height: 100px; /* プロフィール画像の高さを小さく */
+        margin-bottom: 5px; /* 下の margin を小さく */
+    }
+
+    #basic-info .profile-text p {
+        font-size: 0.9em; /* テキストの文字サイズを小さく */
+    }
+
+    #favorites ul, #school-days ul {
+        padding-left: 0; /* スマホではインデント不要に */
+    }
+}
